@@ -27,12 +27,17 @@ export default class Drug {
         // Append the div to the player area
         document.getElementById("player-area").appendChild(this.#drugElement);
     }
+    #deleteElement() {
+        // TODO: callback to function in constructor so that we dont reference a element not in the DOM
+        this.#drugElement.remove();
+    }
     get positionX() {
         return this.#positionX;
     }
     set positionX(x) {
         this.#positionX = x;
         this.#drugElement.style.right = `${x}px`;
+        if (x >= 1000 + this.#width) this.#deleteElement();
     }
     get positionY() {
         return this.#positionY;
