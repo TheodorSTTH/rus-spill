@@ -1,12 +1,11 @@
-import Drug from "./drug.js";
+import Hasj from "./hasj.js";
 
-const myDrug = new Drug(100, 100, "");
-
+const myHasj = new Hasj(0, 200);
 let gameSpeed = 2;
 
-function update() {
-    // Your update logic goes here
-    myDrug.positionX += 1 * gameSpeed;
+function update() { // one game step
+    myHasj.positionX += 1 * gameSpeed;
+    // myHasj.applyEffect();
 }
 
 const frameRate = 60; // Set the desired frame rate

@@ -22,10 +22,14 @@ export default class Drug {
         this.#drugElement.style.right = `${this.#positionX}px`;
         this.#drugElement.style.width = `${this.#width}px`;
         this.#drugElement.style.height = `${this.#height}px`;
-        this.#drugElement.style.backgroundColor = 'blue';
+        this.#drugElement.style.background = this.icon || "red";
 
         // Append the div to the player area
         document.getElementById("player-area").appendChild(this.#drugElement);
+    }
+    #deleteElement() {
+        // TODO: callback to function in constructor so that we dont reference a element not in the DOM
+        this.#drugElement.remove();
     }
     get positionX() {
         return this.#positionX;
@@ -33,6 +37,7 @@ export default class Drug {
     set positionX(x) {
         this.#positionX = x;
         this.#drugElement.style.right = `${x}px`;
+        if (x >= 1000 + this.#width) this.#deleteElement();
     }
     get positionY() {
         return this.#positionY;
