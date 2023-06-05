@@ -2,11 +2,12 @@ import Drug from "./drug.js";
 
 export default class Hasj {
     #Hasj;
-    speed = 2; // * This speed is specific to a perticular item, so that coke for example, can move faster than alcohol
+    speedX = 2;
+    speedY = 0;
     constructor(positionX, positionY) {
         this.#Hasj = new Drug(positionX, positionY, "green");
     }
-    applyEffect() {
+    applyEffect(sceneManager) {
         console.log("+ Filter")
         console.log("- Liv")
     }

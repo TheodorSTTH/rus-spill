@@ -1,14 +1,14 @@
 import Hasj from "./hasj.js";
 import SceneManager from "./sceneManager.js";
 
-let gameSpeed = 2;
-const mySceneManager = new SceneManager(gameSpeed);
+const mySceneManager = new SceneManager(2, 0); // TODO: increase as game speed x as game goes on
+
 
 const myHasj1 = new Hasj(0, 0);
 const myHasj2 = new Hasj(40, 100);
 
-mySceneManager.addItem(myHasj1);
-mySceneManager.addItem(myHasj2);
+mySceneManager.enqueue(myHasj1);
+mySceneManager.enqueue(myHasj2);
 
 
 
@@ -20,9 +20,14 @@ const playerHight = 100;
 
 
 
-function update() { // one game step
+function update() { // TODO: Time.
     mySceneManager.move();
-    if (mySceneManager.getCollidingElement(playerPositionX, playerPositionY, playerWidth, playerHight)) alert("COLLISION");
+    // ! NICO om du plotter inn spiller data under så burde kollisjoner med drugs fungere
+    const collidingItem = mySceneManager.getCollidingItem(playerPositionX, playerPositionY, playerWidth, playerHight);
+    if (collidingItem) {
+        collidingItem.applyEffect(mySceneManager); // ? Maybe have somthing like filterManager.applyEffect(collidingItem)
+        mySceneManager.removeSpecificItem(collidingItem);
+    }
 }
 
 const frameRate = 60; // Set the desired frame rate

@@ -1,12 +1,15 @@
-export default class SceneManager {
-    #items = [];
-    gameSpeed;
-    constructor(initialGameSpeed) {
-        this.gameSpeed = initialGameSpeed;
+export default class SceneManager { // * Manages everything that happens in the scene at a high level
+    #items = []; // TODO: move items to a queue data structure for better performence
+    gameSpeedX;
+    gameSpeedY;
+    constructor(initialGameSpeedX, initialGameSpeedY) {
+        this.gameSpeedX = initialGameSpeedX;
+        this.gameSpeedY = initialGameSpeedY;
     }
     move() {
         this.#items.forEach(item => {
-            item.positionX += this.gameSpeed * item.speed;
+            item.positionX += this.gameSpeedX * item.speedX;
+            item.positionY += this.gameSpeedY * item.speedX;
             if (item.positionX >= 1030) item.deleteElement();
         })
     }
@@ -18,7 +21,7 @@ export default class SceneManager {
         if (this.#isBetween(positionX2, positionX1, positionX1 + width1) && this.#isBetween(positionY2, positionY1, positionY1 + height1)) return true;
         return false
     }
-    getCollidingElement(positionX, positionY, width, height) {
+    getCollidingItem(positionX, positionY, width, height) {
         for (let i = 0; i < this.#items.length; i++) {
             const currentItem = this.#items[i];
             if (this.#isColliding(positionX, positionY, width, height, currentItem.positionX, currentItem.positionY, currentItem.width, currentItem.height)) {
@@ -27,11 +30,18 @@ export default class SceneManager {
         }
         return false;
     }
-    addItem(item) {
+    enqueue(item) {
         this.#items.push(item)
     }
-    removeItem(item) {
+    dequeue() {
+        this.#items[0].deleteElement();
         delete this.#items[0];
         return this.#items.shift();
+    }
+    removeSpecificItem(toBeDeletedItem) {
+        const toBeDeletedItemIndex = this.#items.indexOf(toBeDeletedItem);
+        this.#items[toBeDeletedItemIndex].deleteElement();
+        delete this.#items[toBeDeletedItemIndex];
+        return this.#items.splice(toBeDeletedItemIndex, 1);
     }
 }
