@@ -1,5 +1,3 @@
-// import constants from "./constants";
-
 export default class Drug {
     #positionX;
     #positionY;
