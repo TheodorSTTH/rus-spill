@@ -22,7 +22,7 @@ export default class Drug {
         this.#drugElement.style.right = `${this.#positionX}px`;
         this.#drugElement.style.width = `${this.#width}px`;
         this.#drugElement.style.height = `${this.#height}px`;
-        this.#drugElement.style.backgroundColor = 'blue';
+        this.#drugElement.style.background = this.icon || "red";
 
         // Append the div to the player area
         document.getElementById("player-area").appendChild(this.#drugElement);
