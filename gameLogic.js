@@ -1,1 +1,1 @@
-console.log("Game")
+console.log("Gayme")
