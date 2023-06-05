@@ -35,7 +35,7 @@ a {
 }
 
 #game-link:hover {
-    background-image: none;
+    background-image: url('maxresdefault.jpg');
 }
 
 @keyframes linkAnimation {
