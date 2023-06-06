@@ -1,6 +1,6 @@
 import Transform from "./Transform.js";
 
-export default class Drug {
+export default class Drug { // TODO: This needs a huge refactor, it creates too much boilerplate
     #transform;
     #drugElement;
     constructor(positionX, positionY, icon, width = 48, height = 48) {
