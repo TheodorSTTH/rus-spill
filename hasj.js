@@ -7,14 +7,14 @@ export default class Hasj {
     constructor(positionX, positionY) {
         this.#Hasj = new Drug(positionX, positionY, "green");
     }
-    applyEffect() {
-        console.log("+ Filter")
+    applyEffect(stats, sceneManager) {
         document.body.style.filter = "hue-rotate(90deg) invert() opacity(.5)";
-
-        console.log("- Liv")
+        sceneManager.gameSpeedX = sceneManager.gameSpeedX / 2;
+        stats.health -= 1;
     }
-    removeEffect() {
+    removeEffect(stats, sceneManager) {
         document.body.style.filter = "";
+        sceneManager.gameSpeedX = sceneManager.gameSpeedX * 2;
         console.log("Effect finished")
     }
     deleteElement() {
