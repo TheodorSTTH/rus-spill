@@ -1,15 +1,11 @@
+import Transform from "./Transform.js";
+
 export default class Drug {
-    #positionX;
-    #positionY;
-    #width;
-    #height;
+    #transform;
     #drugElement;
     constructor(positionX, positionY, icon, width = 48, height = 48) {
-        this.#positionX = positionX;
-        this.#positionY = positionY;
+        this.#transform = new Transform(positionX, positionY, width, height)
         this.icon = icon;
-        this.#width = width;
-        this.#height = height;
         this.#addToDOM();
     }
     #addToDOM() {
@@ -18,33 +14,36 @@ export default class Drug {
 
         // Apply CSS styling
         this.#drugElement.style.position = "absolute";
-        this.#drugElement.style.bottom = `${this.#positionY}px`;
-        this.#drugElement.style.right = `${this.#positionX}px`;
-        this.#drugElement.style.width = `${this.#width}px`;
-        this.#drugElement.style.height = `${this.#height}px`;
-        this.#drugElement.style.backgroundColor = 'blue';
+        this.#drugElement.style.right = `${this.#transform.positionX}px`;
+        this.#drugElement.style.bottom = `${this.#transform.positionY}px`;
+        this.#drugElement.style.width = `${this.#transform.width}px`;
+        this.#drugElement.style.height = `${this.#transform.height}px`;
+        this.#drugElement.style.background = this.icon || "red";
 
         // Append the div to the player area
         document.getElementById("player-area").appendChild(this.#drugElement);
     }
+    deleteElement() { // deletes element from DOM
+        this.#drugElement.remove();
+    }
     get positionX() {
-        return this.#positionX;
+        return this.#transform.positionX;
     }
     set positionX(x) {
-        this.#positionX = x;
+        this.#transform.positionX = x;
         this.#drugElement.style.right = `${x}px`;
     }
     get positionY() {
-        return this.#positionY;
+        return this.#transform.positionY;
     }
     set positionY(y) {
-        this.#positionY = y;
+        this.#transform.positionY = y;
         this.#drugElement.style.bottom = `${y}px`;
     }
     get width() {
-        return this.#width;
+        return this.#transform.width;
     }
     get height() {
-        return this.#height;
+        return this.#transform.height;
     }
 }

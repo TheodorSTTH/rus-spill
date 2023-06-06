@@ -1,32 +1,40 @@
 body {
-    background-image: linear-gradient(90deg, #07c653, #036d0a);
-    font-family: 'Silkscreen';
+    background-image: url('Images/Backgrounds/maxresdefault.jpg');
+    background-repeat: no-repeat;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
     color: white;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 a {
     text-decoration: none;
     color: white;
-    font-size: 65px;
+    font-size: 55px;
 }
 
 .center {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 .title {
-    text-align: center;
-    font-size: 55px;
+    position: fixed;
+    width: 55rem;
+    height: 40rem;
+    margin-top: -10rem; 
     
 }
 
 #game-link {
     position: relative;
     text-align: center;
-    margin-top: 10rem;
-    background-color: #116a17;
+    background-color: #363836;
     display: block;
-    width: 25rem;
+    margin-top: 20rem;
+    width: 20rem;
     height: 10rem;
     border: 4px solid rgb(184, 184, 184);
     border-radius: 15px;
@@ -35,7 +43,7 @@ a {
 }
 
 #game-link:hover {
-    background-image: url('maxresdefault.jpg');
+    background-color: #2a2e2a;
 }
 
 @keyframes linkAnimation {
@@ -49,3 +57,15 @@ a {
       transform: translateY(0);
     }
   }
+
+.credits {
+    position: absolute;
+    text-align: center;
+    line-height: 2rem;
+    color: black;
+    width: 100%;
+    height: 4rem;
+    left: 0;
+    bottom: 0;
+    background-color: rgb(89, 242, 72);
+}
