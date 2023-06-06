@@ -3,16 +3,14 @@ import Hasj from "./hasj.js";
 import SceneManager from "./sceneManager.js";
 import Stats from "./stats.js";
 
-const mySceneManager = new SceneManager(2, 0); // TODO: increase gameSpeedX as game goes on
+const mySceneManager = new SceneManager(1, 0);
 const myStats = new Stats();
 
-const myHasj1 = new Hasj(0, 0);
-const myHasj2 = new Hasj(40, 100);
-
-mySceneManager.enqueue(myHasj1);
-mySceneManager.enqueue(myHasj2);
-
-
+function makeRandomItem() {
+    const newHasj = new Hasj(0, 0);
+    newHasj.positionY = Math.random() * (500 - newHasj.height)
+    mySceneManager.enqueue(newHasj);
+}
 
 // TODO: Add a real player instanse
 const playerPositionX = 800;
@@ -21,14 +19,19 @@ const playerWidth = 50;
 const playerHight = 100;
 
 
-
+let spawnrateCount = 0;
 function update() { // TODO: better update function (Vsync & deltaTime)
+    spawnrateCount++;
     mySceneManager.step();
     // ! NICO om du plotter inn spiller data under så burde kollisjoner med drugs fungere
     const collidingItem = mySceneManager.getCollidingItem(playerPositionX, playerPositionY, playerWidth, playerHight);
     if (collidingItem) {
         EffectManager.activateEffect(() => collidingItem.applyEffect(myStats, mySceneManager), () => collidingItem.removeEffect(myStats, mySceneManager), 3000);
         mySceneManager.removeSpecificItem(collidingItem);
+    }
+    if (spawnrateCount === 120) {
+        makeRandomItem();
+        spawnrateCount = 0;
     }
 }
 

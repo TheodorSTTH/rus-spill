@@ -6,7 +6,18 @@ export default class SceneManager { // * Manages everything that happens in the 
         this.gameSpeedX = initialGameSpeedX;
         this.gameSpeedY = initialGameSpeedY;
     }
+    #speedFunction(speed) { // a sigmoid function to make sure the speed doesnt increase forever, not a logarithmic to have more change in speed over time
+        return 1 / (0.16 + Math.pow(Math.E, -0.5 * speed)); // og folk sier at R1 ikke har noen praktiske formål
+    }
+    #inverseSpeedFunction(speed) {
+        return Math.log((1 / speed) - 0.16) / -0.5;
+    }
+    addSpeedX() {
+        const newSpeedX = this.#speedFunction(this.#inverseSpeedFunction(this.gameSpeedX) + 0.001); // the last value is a arbitrary value deciding the jumps in the speed function
+        this.gameSpeedX = newSpeedX;
+    }
     step() {        // one step in the game (kinda like what happens each frame)
+        this.addSpeedX();
         this.#items.forEach(item => {
             item.positionX += this.gameSpeedX * item.speedX;
             item.positionY += this.gameSpeedY * item.speedX;

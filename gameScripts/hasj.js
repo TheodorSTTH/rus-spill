@@ -1,4 +1,5 @@
 import Drug from "./drug.js";
+import EffectManager from "./EffectManager.js";
 
 export default class Hasj {
     #Hasj;
@@ -8,13 +9,13 @@ export default class Hasj {
         this.#Hasj = new Drug(positionX, positionY, "green");
     }
     applyEffect(stats, sceneManager) {
-        document.body.style.filter = "hue-rotate(90deg) invert() opacity(.5)";
-        sceneManager.gameSpeedX = sceneManager.gameSpeedX / 2;
+        EffectManager.addFilter("hue-rotate(90deg) invert() opacity(.5)")
+        sceneManager.gameSpeedX = sceneManager.gameSpeedX / 3;
         stats.health -= 1;
     }
     removeEffect(stats, sceneManager) {
-        document.body.style.filter = "";
-        sceneManager.gameSpeedX = sceneManager.gameSpeedX * 2;
+        EffectManager.removeFilter("hue-rotate(90deg) invert() opacity(.5)");
+        sceneManager.gameSpeedX = sceneManager.gameSpeedX * 3;
         console.log("Effect finished")
     }
     deleteElement() {

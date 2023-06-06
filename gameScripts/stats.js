@@ -1,7 +1,6 @@
 export default class Stats {
     #health = 5;
     #maxHealth = 5;
-    speed;
     constructor() {
         document.getElementById("hp").innerText = this.#health;
     }
