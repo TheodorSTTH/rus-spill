@@ -1,3 +1,4 @@
+import Coke from "./coke.js";
 import EffectManager from "./EffectManager.js";
 import Hasj from "./hasj.js";
 import SceneManager from "./sceneManager.js";
@@ -7,7 +8,7 @@ const mySceneManager = new SceneManager(1, 0);
 const myStats = new Stats();
 
 function makeRandomItem() {
-    const newHasj = new Hasj(0, 0);
+    const newHasj = new Coke(0, 0);
     newHasj.positionY = Math.random() * (500 - newHasj.height)
     mySceneManager.enqueue(newHasj);
 }
@@ -26,10 +27,10 @@ function update() { // TODO: better update function (Vsync & deltaTime)
     // ! NICO om du plotter inn spiller data under så burde kollisjoner med drugs fungere
     const collidingItem = mySceneManager.getCollidingItem(playerPositionX, playerPositionY, playerWidth, playerHight);
     if (collidingItem) {
-        EffectManager.activateEffect(() => collidingItem.applyEffect(myStats, mySceneManager), () => collidingItem.removeEffect(myStats, mySceneManager), 3000);
+        EffectManager.activateEffect(() => collidingItem.applyEffect(myStats, mySceneManager), () => collidingItem.removeEffect(myStats, mySceneManager), collidingItem.effectLength * 1000);
         mySceneManager.removeSpecificItem(collidingItem);
     }
-    if (spawnrateCount === 120) {
+    if (spawnrateCount === 120) { // make item every 2 seconds 
         makeRandomItem();
         spawnrateCount = 0;
     }

@@ -10,7 +10,7 @@ export default class Drug { // TODO: This needs a huge refactor, it creates too 
     }
     #addToDOM() {
         // Create DOM element
-        this.#drugElement = document.createElement('div');
+        this.#drugElement = document.createElement('img');
 
         // Apply CSS styling
         this.#drugElement.style.position = "absolute";
@@ -18,7 +18,7 @@ export default class Drug { // TODO: This needs a huge refactor, it creates too 
         this.#drugElement.style.bottom = `${this.#transform.positionY}px`;
         this.#drugElement.style.width = `${this.#transform.width}px`;
         this.#drugElement.style.height = `${this.#transform.height}px`;
-        this.#drugElement.style.background = this.icon || "red";
+        this.#drugElement.src = this.icon;
 
         // Append the div to the player area
         document.getElementById("player-area").appendChild(this.#drugElement);
