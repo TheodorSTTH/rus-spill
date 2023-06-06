@@ -10,7 +10,10 @@ const myStats = new Stats();
 function makeRandomItem() {
     const newHasj = new Coke(0, 0);
     newHasj.positionY = Math.random() * (500 - newHasj.height)
+    const newHasj2 = new Hasj(0, 0);
+    newHasj2.positionY = Math.random() * (500 - newHasj2.height)
     mySceneManager.enqueue(newHasj);
+    mySceneManager.enqueue(newHasj2);
 }
 
 // TODO: Add a real player instanse
