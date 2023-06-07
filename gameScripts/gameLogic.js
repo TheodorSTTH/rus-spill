@@ -18,7 +18,7 @@ function getRandomInt(max) {
 }
 function randomItem() {
     let newItem;
-    const randomInt = Utils.getRandomInt(4);
+    const randomInt = Utils.getRandomInt(5);
     console.log(randomInt)
     switch (randomInt) {
         case 1:
@@ -51,7 +51,7 @@ document.addEventListener('keydown', function(event) {
         directionY = 0.35;
     };
 });
-document.addEventListener('keyup', function(event) {
+document.addEventListener('keyup', function (event) {
     if (event.code === 'Space' || event.keyCode === 32) {
         directionY = -0.35;
     };

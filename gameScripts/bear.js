@@ -10,11 +10,11 @@ export default class Bear {
         this.#Bear = new Drug(positionX, positionY, "./images/Ikoner/teddybear.png");
     }
     applyEffect(stats, sceneManager) {
-        EffectManager.addFilter("hue-rotate(90deg) contrast(200%) brightness(300%)")
+        // EffectManager.addFilter("hue-rotate(90deg) contrast(200%) brightness(300%)")
         stats.health += 1;
     }
     removeEffect(stats, sceneManager) {
-        EffectManager.removeFilter("hue-rotate(90deg) contrast(200%) brightness(300%)");
+        // EffectManager.removeFilter("hue-rotate(90deg) contrast(200%) brightness(300%)");
     }
     deleteElement() {
         this.#Bear.deleteElement();
