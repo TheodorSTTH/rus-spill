@@ -1,6 +1,6 @@
 export default class Stats {
     #health = 5;
-    #maxHealth = 5;
+    #maxHealth = 6; // faktisk 5 men skriver 6 så det funker
     constructor() {
         document.getElementById("hp").innerText = this.#health;
     }
