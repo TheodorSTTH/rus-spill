@@ -45,12 +45,12 @@ function randomItem() {
 }
 
 let directionY = -1;
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function (event) {
     if (event.code === 'Space' || event.keyCode === 32) {
         directionY = 1;
     };
 });
-document.addEventListener('keyup', function(event) {
+document.addEventListener('keyup', function (event) {
     if (event.code === 'Space' || event.keyCode === 32) {
         directionY = -1;
     };
@@ -66,7 +66,7 @@ function update() { // TODO: better update function (Vsync & deltaTime)
     if (myStats.health === 0) Utils.replaceUrl('game.html', 'Endscreen.html');
     spawnrateCount++;
     player.positionY += 7 * directionY;
-    if (player.positionY <=0) {
+    if (player.positionY <= 0) {
         player.positionY = 0;
     } else if (player.positionY >= 400) {
         player.positionY = 400;

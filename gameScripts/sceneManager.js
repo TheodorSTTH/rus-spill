@@ -13,7 +13,9 @@ export default class SceneManager { // * Manages everything that happens in the 
         return Math.log((1 / speed) - 0.16) / -0.5;
     }
     addSpeedX() {
-        const newSpeedX = this.#speedFunction(this.#inverseSpeedFunction(this.gameSpeedX) + 0.001); // the last value is a arbitrary value deciding the jumps in the speed function
+        if (isNaN(this.#inverseSpeedFunction(this.gameSpeedX))) this.gameSpeedX = 6.23;
+        let newSpeedX = this.#speedFunction(this.#inverseSpeedFunction(this.gameSpeedX) + 0.001); // the last value is a arbitrary value deciding the jumps in the speed function
+        // console.log(newSpeedX)
         this.gameSpeedX = newSpeedX;
     }
     step() {        // one step in the game (kinda like what happens each frame)
