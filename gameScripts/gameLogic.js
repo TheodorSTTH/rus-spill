@@ -18,7 +18,7 @@ function getRandomInt(max) {
 }
 function randomItem() {
     let newItem;
-    const randomInt = Utils.getRandomInt(4);
+    const randomInt = Utils.getRandomInt(5);
     console.log(randomInt)
     switch (randomInt) {
         case 1:
