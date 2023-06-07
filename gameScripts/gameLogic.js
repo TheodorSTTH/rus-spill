@@ -1,5 +1,6 @@
 import Alcohol from "./alcohol.js";
 import Coke from "./coke.js";
+import Bear from "./bear.js";
 import EffectManager from "./EffectManager.js";
 import Fleinsopp from "./fleinsopp.js";
 import Hasj from "./hasj.js";
@@ -17,7 +18,7 @@ function getRandomInt(max) {
 }
 function randomItem() {
     let newItem;
-    const randomInt = Utils.getRandomInt(4); // 1, 2, 3
+    const randomInt = Utils.getRandomInt(4);
     console.log(randomInt)
     switch (randomInt) {
         case 1:
@@ -31,6 +32,9 @@ function randomItem() {
             break;
         case 4:
             newItem = new Fleinsopp(0, 0);
+            break;
+        case 5:
+            newItem = new Bear(0, 0);
             break;
         default:
             newItem = new Alcohol(0, 0);
