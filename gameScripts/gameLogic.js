@@ -9,7 +9,7 @@ import Stats from "./stats.js";
 import Player from "./player.js";
 import Utils from "./utils.js";
 
-const mySceneManager = new SceneManager(1, 0);
+const mySceneManager = new SceneManager(2, 0);
 const myStats = new Stats();
 const player = new Player(800, 100);
 
@@ -45,14 +45,15 @@ function randomItem() {
 }
 
 let directionY = -1;
-document.addEventListener('keydown', function (event) {
+let playerSpeedY = 0;
+document.addEventListener('keydown', function(event) {
     if (event.code === 'Space' || event.keyCode === 32) {
-        directionY = 1;
+        directionY = 0.35;
     };
 });
 document.addEventListener('keyup', function (event) {
     if (event.code === 'Space' || event.keyCode === 32) {
-        directionY = -1;
+        directionY = -0.35;
     };
 });
 
@@ -65,11 +66,15 @@ let spawnrateCount = 0;
 function update() { // TODO: better update function (Vsync & deltaTime)
     if (myStats.health === 0) Utils.replaceUrl('game.html', 'Endscreen.html');
     spawnrateCount++;
-    player.positionY += 7 * directionY;
-    if (player.positionY <= 0) {
+    playerSpeedY += directionY;
+    player.positionY += playerSpeedY;
+
+    if (player.positionY <=0) {
         player.positionY = 0;
+        playerSpeedY = 0;
     } else if (player.positionY >= 400) {
         player.positionY = 400;
+        playerSpeedY = 0;
     }
     mySceneManager.step();
     // ! NICO om du plotter inn spiller data under så burde kollisjoner med drugs fungere
