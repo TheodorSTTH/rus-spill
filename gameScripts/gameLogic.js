@@ -5,9 +5,11 @@ import Fleinsopp from "./fleinsopp.js";
 import Hasj from "./hasj.js";
 import SceneManager from "./sceneManager.js";
 import Stats from "./stats.js";
+import Player from "./player.js";
 
 const mySceneManager = new SceneManager(1, 0);
 const myStats = new Stats();
+const player = new Player(800, 100);
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max)) + 1;
@@ -41,13 +43,6 @@ function makeRandomItem() {
     mySceneManager.enqueue(newItem);
 }
 
-// TODO: Add a real player instanse
-const playerPositionX = 800;
-const playerPositionY = 100;
-const playerWidth = 50;
-const playerHight = 100;
-
-
 let spawnrateCount = 0;
 function update() { // TODO: better update function (Vsync & deltaTime)
     if (myStats.health === 0) {
@@ -63,7 +58,7 @@ function update() { // TODO: better update function (Vsync & deltaTime)
     spawnrateCount++;
     mySceneManager.step();
     // ! NICO om du plotter inn spiller data under så burde kollisjoner med drugs fungere
-    const collidingItem = mySceneManager.getCollidingItem(playerPositionX, playerPositionY, playerWidth, playerHight);
+    const collidingItem = mySceneManager.getCollidingItem(player.positionX, player.positionY, player.width, player.height);
     if (collidingItem) {
         EffectManager.activateEffect(() => collidingItem.applyEffect(myStats, mySceneManager), () => collidingItem.removeEffect(myStats, mySceneManager), collidingItem.effectLength * 1000);
         mySceneManager.removeSpecificItem(collidingItem);
