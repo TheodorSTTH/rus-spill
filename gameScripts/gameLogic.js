@@ -9,7 +9,7 @@ import Stats from "./stats.js";
 import Player from "./player.js";
 import Utils from "./utils.js";
 
-const mySceneManager = new SceneManager(1, 0);
+const mySceneManager = new SceneManager(2, 0);
 const myStats = new Stats();
 const player = new Player(800, 100);
 
