@@ -17,7 +17,7 @@ function getRandomInt(max) {
 }
 function randomItem() {
     let newItem;
-    const randomInt = getRandomInt(4); // 1, 2, 3
+    const randomInt = getRandomInt(5); // 1, 2, 3, 4
     console.log(randomInt)
     switch (randomInt) {
         case 1:
@@ -31,6 +31,9 @@ function randomItem() {
             break;
         case 4:
             newItem = new Fleinsopp(0, 0);
+            break;
+        case 5:
+            newItem = new Bear(0, 0);
             break;
         default:
             newItem = new Alcohol(0, 0);
