@@ -35,13 +35,13 @@ a {
     text-align: center;
     margin-top: -5rem;
     font-size: 55px;
-    color: #9e5d0d;
+    color: #1c1c1c;
 }
 
 #game-link {
     position: relative;
     text-align: center;
-    background-color: #dc9033;
+    background-color: #d46f10;
     font-size: 1.5rem;
     display: block;
     margin-top: 10rem;
@@ -54,7 +54,7 @@ a {
 }
 
 #game-link:hover {
-    background-color: #da8620;
+    background-color: #eb790e;
 }
 
 @keyframes linkAnimation {
@@ -73,10 +73,10 @@ a {
     position: absolute;
     text-align: center;
     margin-top: 2rem;
-    color: black;
+    color: #1c1c1c;
     width: 100%;
     height: 4rem;
     left: 0;
     bottom: 0;
-    background-color: #dc9033;
+    background-color: #d46f10;
 }
