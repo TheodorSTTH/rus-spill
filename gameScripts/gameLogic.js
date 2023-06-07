@@ -8,6 +8,7 @@ import SceneManager from "./sceneManager.js";
 import Stats from "./stats.js";
 import Player from "./player.js";
 import Utils from "./utils.js";
+import Speed from "./speed.js";
 
 const mySceneManager = new SceneManager(2, 0);
 const myStats = new Stats();
@@ -36,6 +37,9 @@ function randomItem() {
         case 5:
             newItem = new Bear(0, 0);
             break;
+        case 6:
+            newItem = new Speed(0, 0);
+            break;
         default:
             newItem = new Alcohol(0, 0);
             break;
@@ -46,7 +50,7 @@ function randomItem() {
 
 let directionY = -1;
 let playerSpeedY = 0;
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function (event) {
     if (event.code === 'Space' || event.keyCode === 32) {
         directionY = 0.35;
     };
@@ -69,7 +73,7 @@ function update() { // TODO: better update function (Vsync & deltaTime)
     playerSpeedY += directionY;
     player.positionY += playerSpeedY;
 
-    if (player.positionY <=0) {
+    if (player.positionY <= 0) {
         player.positionY = 0;
         playerSpeedY = 0;
     } else if (player.positionY >= 400) {
