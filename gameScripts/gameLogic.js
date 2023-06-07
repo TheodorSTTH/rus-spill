@@ -7,6 +7,7 @@ import Hasj from "./hasj.js";
 import SceneManager from "./sceneManager.js";
 import Stats from "./stats.js";
 import Player from "./player.js";
+import Utils from "./utils.js";
 
 const mySceneManager = new SceneManager(1, 0);
 const myStats = new Stats();
@@ -17,7 +18,7 @@ function getRandomInt(max) {
 }
 function randomItem() {
     let newItem;
-    const randomInt = getRandomInt(5); // 1, 2, 3, 4
+    const randomInt = Utils.getRandomInt(4);
     console.log(randomInt)
     switch (randomInt) {
         case 1:
@@ -49,16 +50,7 @@ function makeRandomItem() {
 
 let spawnrateCount = 0;
 function update() { // TODO: better update function (Vsync & deltaTime)
-    if (myStats.health === 0) {
-        // Get the current URL
-        var currentUrl = window.location.href;
-
-        // Replace the 'game.html' part with 'Endscreen.html'
-        var newUrl = currentUrl.replace('game.html', 'Endscreen.html');
-
-        // Navigate to the new URL
-        window.location.href = newUrl;
-    }
+    if (myStats.health === 0) Utils.replaceUrl('game.html', 'Endscreen.html');
     spawnrateCount++;
     mySceneManager.step();
     // ! NICO om du plotter inn spiller data under så burde kollisjoner med drugs fungere
