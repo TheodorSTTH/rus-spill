@@ -1,4 +1,5 @@
 import Coke from "./coke.js";
+import Bear from "./bear.js";
 import EffectManager from "./EffectManager.js";
 import Hasj from "./hasj.js";
 import SceneManager from "./sceneManager.js";
@@ -14,9 +15,12 @@ function makeRandomItem() {
     newHasj.positionY = Math.random() * (500 - newHasj.height)
     const newHasj2 = new Hasj(0, 0);
     newHasj2.positionY = Math.random() * (500 - newHasj2.height)
+    const newHasj3 = new Bear(0, 0);
+    newHasj3.positionY = Math.random() * (500 - newHasj3.height)
 
     mySceneManager.enqueue(newHasj);
     mySceneManager.enqueue(newHasj2);
+    mySceneManager.enqueue(newHasj3);
 }
 
 let spawnrateCount = 0;
