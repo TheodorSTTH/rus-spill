@@ -49,7 +49,8 @@ a {
 
 #game-link:hover {
     background-color: rgb(175, 220, 147);
-    transform: scale(1.5);
+    transform: scale(1.1);
+    
 }
 
 @keyframes linkAnimation {
